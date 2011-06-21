@@ -270,7 +270,7 @@ select {
 
 .selectbox .values {
 	position: absolute; left: 0; right: 0;
-	z-index: 2;
+	z-index: 400;
 	margin: 0;
 	max-height: 200px;
 	overflow-y: auto;

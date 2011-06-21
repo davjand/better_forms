@@ -3,6 +3,10 @@
 	$(document).ready(function() {
 
 		$("select").each(function() {
+			
+			/*skip a few classes: reflink*/
+			if($(this).hasClass('reflink_replace')) return true;
+					 
 			if ($(this).parents('.controls').length > 0 || $(this).parents('.actions').length > 0) {
 				$(this).symphonySelectbox({
 					mode: 'tiny'
@@ -11,6 +15,7 @@
 			else {
 				$(this).symphonySelectbox();
 			}
+			
 		});
 
 		$('input[type="checkbox"]').symphonyCheckbox();
