@@ -4,7 +4,7 @@
 		var objects = this;
 		var settings = {
 			mode: '',
-			ignore: 'div.field-subsectionmanager, div.contextual.irrelevant',
+			ignore: 'div.field-subsectionmanager, div.contextual.irrelevant, #extension-dashboard-index h2',
 			delay_initialize: false,
 		};
 
@@ -41,17 +41,18 @@
 				var select = $(this);
 				var selectbox = select.siblings('.selectbox');
 				var options = select.find('option');
+        var escaper = function(s) { return s.replace(/([#;&,\.\+\*\~':"\!\^$\[\]\(\)=>\|])/g, "\\$1"); };
 
 				if (!select.attr('multiple')) {
 					selectbox
-						.find('span.value-' + options.filter(':selected').attr('value'))
+						.find('span.value-' + escaper(options.filter(':selected').attr('value')))
 						.parent('li')
 						.trigger('click.selectbox', startMode);
 				}
 				else {
 					options.each(function() {
 						selectbox
-							.find('span.value-' + $(this).attr('value'))
+							.find('span.value-' + escaper($(this).attr('value')))
 							.parent('li')
 							.toggleClass('selected', $(this).is(':selected'));
 					})
